@@ -1,7 +1,5 @@
 package ghtk.excel.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ghtk.excel.dto.DTO;
 import ghtk.excel.model.entity.CategoryEntity;
-import ghtk.excel.repository.CategoryRepository;
+import ghtk.excel.services.CategoryService;
 
 
 
@@ -23,31 +22,30 @@ import ghtk.excel.repository.CategoryRepository;
 public class CategoryController {
 	
 	@Autowired
-	private CategoryRepository categoryRepository;
+	private CategoryService categoryService;
 	
 	
 	@GetMapping("")
 	public ResponseEntity get() {
-		List<CategoryEntity> categoryEntities = categoryRepository.findAll();
-		
-		return ResponseEntity.ok(categoryEntities);
+		DTO<CategoryEntity> listCate = categoryService.findAll();
+		return ResponseEntity.ok(listCate);
 	}
 	
 	@PostMapping("")
 	public ResponseEntity create(@RequestBody CategoryEntity categoryEntity) {
-		categoryRepository.save(categoryEntity);
-		
+		categoryService.create(categoryEntity);
 		return ResponseEntity.ok().body(categoryEntity);
 		
 	}
 	@PutMapping("")
 	public ResponseEntity update(@RequestBody CategoryEntity categoryEntity) {
-		return ResponseEntity.ok(categoryRepository.save(categoryEntity));
+		categoryService.update(categoryEntity);
+		return ResponseEntity.ok("ok");
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity delete(@PathVariable Long id) {
-		categoryRepository.deleteById(id);
+		categoryService.delete(id);
 		return ResponseEntity.ok("Da xoa thanh cong " + id);
 	}
 	
