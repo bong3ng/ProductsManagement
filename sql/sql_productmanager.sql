@@ -1,98 +1,174 @@
+-- Table structure for table `category`
+--
 
-create table category(
-	id int primary key auto_increment,
-    name nvarchar(50),
-    code varchar(20),
-    status int,
-    description nvarchar(100)
-);
+DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `description` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-create table product(
-	id int primary key auto_increment,
-    name nvarchar(50),
-    price int,
-    sku varchar(50),
-    status int,
-    description nvarchar(100),
-    category_id int,
-    FOREIGN KEY (category_id) REFERENCES category(id)
-);
+--
+-- Dumping data for table `category`
+--
 
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'Áo khoác','strinhtrhrtgz',1,'okerht4ytrz'),(2,'Áo khoác gió','strinhtrhrtgz',1,'okerht4ytrz'),(3,'Áo khoác gió','strinhtrhrtgz',1,'okerht4ytrz'),(4,'Quần','abcrtgz',2,'okerht4ytrz'),(5,'Giầy','abcrtgz',2,'okerht4ytrz'),(6,'dép','abcrtgz',2,'okerht4ytrz'),(7,'áo khoác gió',NULL,1,'dfghdfsghkjfdkjh');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
 
-create table province(
-	id int primary key auto_increment,
-    code varchar(50),
-    name nvarchar(50)
-);
+--
+-- Table structure for table `district`
+--
 
-create table warehouse_product(
-	id int primary key auto_increment,
-    product_id int,
-    warehouse_id int,
-    inventory int,
-    total_import int,
-    total_export int,
-    start_date datetime,
-    expire_date datetime
-);
+DROP TABLE IF EXISTS `district`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `district` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) DEFAULT NULL,
+  `name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-create table district(
-	id int primary key auto_increment,
-    code varchar(50),
-    name nvarchar(100)
-);
+--
+-- Dumping data for table `district`
+--
 
-create table warehouse(
-	id int primary key auto_increment,
-    name nvarchar(50),
-    address nvarchar(100),
-    province_id int,
-    status int,
-    district_id int,
-    foreign key (province_id) references province(id),
-    foreign key (district_id) references district(id)
-);
+LOCK TABLES `district` WRITE;
+/*!40000 ALTER TABLE `district` DISABLE KEYS */;
+INSERT INTO `district` VALUES (1,'q1','quan1'),(2,'q2','quan2'),(3,'q3','quan3'),(4,'q4','quan4'),(5,'q5','quan5'),(6,'q6','quan6'),(7,'q7','quan7'),(8,'q8','quan8'),(9,'q9','quan9'),(10,'q10','quan10');
+/*!40000 ALTER TABLE `district` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `product`
+--
 
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `sku` varchar(50) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `description` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `code` varchar(50) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `modified_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=489 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `product`
+--
 
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28','2022-06-28'),(3,'ao khoac gio 2',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',2,NULL,NULL,NULL),(4,'quan',900000,'sdfgdsg',1,'dfghdfsghkjfdkjh',2,NULL,NULL,NULL),(5,'quan',20000,'sdfgdsg',1,'dfghdfsghkjfdkjh',2,NULL,NULL,NULL),(6,'quan',40000,'sdfgdsg',1,'dfghdfsghkjfdkjh',2,NULL,NULL,NULL),(7,'ao',40000,'sdfgvdvsdsg',1,'dfghdfsghkjfdkjh',2,NULL,NULL,NULL),(8,'ao phong',40000,'sdfgvdvsdsg',1,'dfghdfsghkjfdkjh',2,NULL,NULL,NULL),(9,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(10,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(11,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(12,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(13,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(14,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(15,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(16,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(17,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(18,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(19,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(20,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(21,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(22,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(23,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(24,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(25,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(26,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(27,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(28,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(29,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(30,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(31,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(32,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(33,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(34,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(35,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(36,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(37,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(38,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(39,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(40,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(41,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(42,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(43,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(44,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(45,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(46,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(47,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(48,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(49,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(50,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(51,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(52,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(53,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(54,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(55,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(56,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(57,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(58,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(59,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(60,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(61,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(62,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(63,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(64,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(65,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(66,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(67,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(68,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(69,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(70,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(71,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(72,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(73,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(74,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(75,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(76,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(77,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(78,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(79,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(80,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(81,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(82,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(83,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(84,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(85,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(86,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(87,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(88,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(89,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(90,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(91,'áo khoác gió',37000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(92,'quần',51000,'sdfgdsg',1,'dfghdfsghkjfdkjh',3,NULL,NULL,NULL),(93,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(94,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(95,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(96,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(97,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(98,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(99,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(100,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(101,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(102,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(103,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(104,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(105,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(106,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(107,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(108,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(109,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(110,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(111,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(112,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(113,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(114,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(115,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(116,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(117,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(118,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(119,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(120,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(121,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(122,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(123,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(124,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(125,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(126,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(127,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(128,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(129,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(130,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(131,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(132,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(133,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(134,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(135,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(136,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(137,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(138,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(139,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(140,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(141,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(142,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(143,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(144,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(145,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(146,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(147,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(148,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(149,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(150,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(151,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(152,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(153,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(154,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(155,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(156,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(157,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(158,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(159,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(160,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(161,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(162,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(163,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(164,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(165,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(166,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(167,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(168,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(169,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(170,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(171,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(172,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(173,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(174,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(175,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(176,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(177,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(178,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(179,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(180,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(181,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(182,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(183,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(184,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(185,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(186,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(187,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(188,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(189,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(190,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(191,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(192,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(193,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(194,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(195,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(196,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(197,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(198,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(199,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(200,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(201,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(202,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(203,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(204,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(205,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(206,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(207,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(208,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(209,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(210,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(211,'dép',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',6,NULL,NULL,NULL),(212,'giày',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,NULL,NULL,NULL),(213,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(214,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(215,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(216,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(217,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(218,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(219,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(220,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(221,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(222,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(223,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(224,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(225,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(226,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(227,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(228,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(229,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(230,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(231,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(232,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(233,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(234,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(235,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(236,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(237,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(238,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(239,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(240,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(241,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(242,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(243,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(244,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(245,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(246,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(247,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(248,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(249,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(250,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(251,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(252,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(253,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(254,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(255,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(256,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(257,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(258,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(259,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(260,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(261,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(262,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(263,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(264,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(265,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(266,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(267,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(268,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(269,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(270,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(271,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(272,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(273,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(274,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(275,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(276,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(277,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(278,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(279,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(280,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(281,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(282,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(283,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(284,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(285,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(286,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(287,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(288,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(289,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(290,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(291,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(292,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(293,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(294,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(295,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(296,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(297,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(298,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(299,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(300,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(301,'áo',80000,'sdfgdsg',2,'dfghdfsghkjfdkjh',1,NULL,NULL,NULL),(302,'quần',300000,'sdfgdsg',1,'dfghdfsghkjfdkjh',4,NULL,NULL,NULL),(303,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(304,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(305,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(306,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(307,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(308,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(309,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(310,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(311,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(312,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(313,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(314,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(315,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(316,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(317,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(318,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(319,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(320,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(321,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(322,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(323,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(324,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(325,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(326,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(327,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(328,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(329,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(330,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(331,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(332,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(333,'áo',9999999,'sdfgdsg',2,'ao nay dep',1,NULL,NULL,NULL),(334,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(335,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(336,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(337,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(338,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(339,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(340,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(341,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(342,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(343,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(344,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(345,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(346,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(347,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(348,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(349,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(350,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(351,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(352,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(353,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(354,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(355,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(356,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(357,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(358,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(359,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(360,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(361,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(362,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(363,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(364,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(365,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(366,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(367,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(368,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(369,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(370,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(371,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(372,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(373,'áo',888888,'sdfgdsg',2,'ao nay dep',2,NULL,NULL,NULL),(374,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(375,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(376,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(377,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(378,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(379,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(380,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(381,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(382,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(383,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(384,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(385,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(386,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(387,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(388,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(389,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(390,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(391,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(392,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(393,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(394,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(395,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(396,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(397,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(398,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(399,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(400,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(401,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(402,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(403,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(404,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(405,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(406,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(407,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(408,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(409,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(410,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(411,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(412,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(413,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(414,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(415,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(416,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(417,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(418,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(419,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(420,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(421,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(422,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(423,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(424,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(425,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(426,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(427,'áo',7777777,'sdfgdsg',2,'ao nay dep binh thuong',1,NULL,NULL,NULL),(428,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(429,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(430,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(431,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(432,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(433,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(434,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(435,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(436,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(437,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(438,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(439,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(440,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(441,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(442,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(443,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(444,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(445,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(446,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(447,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(448,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(449,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(450,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(451,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(452,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(453,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(454,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(455,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(456,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(457,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(458,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(459,'áo',55555,'sdfgdsg',2,'ao nay xau',1,NULL,NULL,NULL),(460,'áo khoác gió',69000,'sdfgdsg',0,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28',NULL),(461,'áo khoác gió',69000,'sdfgdsg',0,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28',NULL),(462,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28',NULL),(463,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28','2022-06-28'),(464,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28','2022-06-28'),(465,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28',NULL),(466,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28',NULL),(467,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220628','2022-06-28',NULL),(468,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(469,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(470,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(471,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(472,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(473,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(474,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(475,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(476,'áo khoác gió',69000,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(477,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(478,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(479,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(480,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(481,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(482,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(483,'áo khoágrtgtgió',0,'sdfgdsg',1,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(484,'áo khoágrtgtgió',0,'sdfgdsg',0,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(485,'áo khoágrtgtgió',0,'sdfgdsg',0,'dfghdfsghkjfdkjh',5,'5.sdfgdsg.20220628','2022-06-28',NULL),(486,'áo khoác gió',69000,'sdfgdsg',0,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220629','2022-06-29',NULL),(487,'áo khoác gió',69000,'sdfgdsg',1,NULL,1,'1.sdfgdsg.20220629','2022-06-29',NULL),(488,'áo khoác cua hue tran xinh gai',9000000,'sdfgdsg',0,'dfghdfsghkjfdkjh',1,'1.sdfgdsg.20220629','2022-06-29',NULL);
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
 
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (1,'Áo khoác','strinhtrhrtgz',1,'okerht4ytrz');
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (2,'Áo khoác gió','strinhtrhrtgz',1,'okerht4ytrz');
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (3,'Áo khoác gió','strinhtrhrtgz',1,'okerht4ytrz');
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (4,'Quần','abcrtgz',2,'okerht4ytrz');
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (5,'Giầy','abcrtgz',2,'okerht4ytrz');
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (6,'dép','abcrtgz',2,'okerht4ytrz');
-INSERT INTO `category` (`id`,`name`,`code`,`status`,`description`) VALUES (7,'áo khoác gió',NULL,1,'dfghdfsghkjfdkjh');
+--
+-- Table structure for table `province`
+--
 
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (1,'q1','quan1');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (2,'q2','quan2');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (3,'q3','quan3');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (4,'q4','quan4');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (5,'q5','quan5');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (6,'q6','quan6');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (7,'q7','quan7');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (8,'q8','quan8');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (9,'q9','quan9');
-INSERT INTO `district` (`id`,`code`,`name`) VALUES (10,'q10','quan10');
+DROP TABLE IF EXISTS `province`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `province` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (1,'hn','ha noi');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (2,'hp','hai phong');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (3,'qn','quang ninh');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (4,'hg','ha giang');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (5,'bn','bac ninh');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (6,'mc','moc chau');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (7,'tb','thai binh');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (8,'hcm','ho chi minh');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (9,'ls','lang son');
-INSERT INTO `province` (`id`,`code`,`name`) VALUES (10,'qb','quang binh');
+--
+-- Dumping data for table `province`
+--
 
-INSERT INTO `warehouse` (`id`,`name`,`address`,`province_id`,`status`,`district_id`) VALUES (1,'kho 1','so 1',1,0,1);
-INSERT INTO `warehouse` (`id`,`name`,`address`,`province_id`,`status`,`district_id`) VALUES (2,'kho 2','so 10',1,0,1);
+LOCK TABLES `province` WRITE;
+/*!40000 ALTER TABLE `province` DISABLE KEYS */;
+INSERT INTO `province` VALUES (1,'hn','ha noi'),(2,'hp','hai phong'),(3,'qn','quang ninh'),(4,'hg','ha giang'),(5,'bn','bac ninh'),(6,'mc','moc chau'),(7,'tb','thai binh'),(8,'hcm','ho chi minh'),(9,'ls','lang son'),(10,'qb','quang binh');
+/*!40000 ALTER TABLE `province` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `warehouse`
+--
 
+DROP TABLE IF EXISTS `warehouse`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `warehouse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `address` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `province_id` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `district_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `district_id` (`district_id`),
+  CONSTRAINT `warehouse_ibfk_1` FOREIGN KEY (`district_id`) REFERENCES `district` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `warehouse`
+--
 
+LOCK TABLES `warehouse` WRITE;
+/*!40000 ALTER TABLE `warehouse` DISABLE KEYS */;
+INSERT INTO `warehouse` VALUES (1,'kho 1','so 1',1,0,1),(2,'kho 2','so 10',1,0,1);
+/*!40000 ALTER TABLE `warehouse` ENABLE KEYS */;
+UNLOCK TABLES;
 
+--
+-- Table structure for table `warehouse_product`
+--
 
+DROP TABLE IF EXISTS `warehouse_product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `warehouse_product` (
+  `id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `warehouse_id` int(11) DEFAULT NULL,
+  `inventory` int(11) DEFAULT NULL,
+  `total_import` int(11) DEFAULT NULL,
+  `total_export` int(11) DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `expire_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `warehouse_product`
+--
+
+LOCK TABLES `warehouse_product` WRITE;
+/*!40000 ALTER TABLE `warehouse_product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `warehouse_product` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
