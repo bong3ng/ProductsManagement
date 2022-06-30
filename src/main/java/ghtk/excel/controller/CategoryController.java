@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ghtk.excel.model.entity.CategoryEntity;
 import ghtk.excel.repository.CategoryRepository;
-import ghtk.excel.repository.ProductRepository;
 
 
 
@@ -23,17 +22,14 @@ import ghtk.excel.repository.ProductRepository;
 @RequestMapping("/api/v1.0/category")
 public class CategoryController {
 	
-	
-	
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@Autowired
-	private ProductRepository productRepository;
 	
 	@GetMapping("")
 	public ResponseEntity get() {
 		List<CategoryEntity> categoryEntities = categoryRepository.findAll();
+		
 		return ResponseEntity.ok(categoryEntities);
 	}
 	
@@ -51,9 +47,8 @@ public class CategoryController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity delete(@PathVariable Long id) {
-//		Optional<CategoryEntity> categoryEntity = categoryRepository.findById(id);
 		categoryRepository.deleteById(id);
-		return ResponseEntity.ok("thanh cong");
+		return ResponseEntity.ok("Da xoa thanh cong " + id);
 	}
 	
 }
